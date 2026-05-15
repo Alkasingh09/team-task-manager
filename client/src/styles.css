@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,22 +8,169 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   min-width: 320px;
-  color: #18212f;
-  background: #f3f6fa;
-  font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #0f172a;
+  background: #f1f5f9;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
 }
 
-input,
-select,
-textarea,
-button {
+input, select, textarea, button {
   font: inherit;
 }
 
-.status-column {
-  min-height: 16rem;
+button, a, input, select, textarea {
+  transition: all 150ms ease;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: none;
+}
+
+@layer components {
+  .app-panel {
+    @apply bg-white rounded-xl border border-slate-200 shadow-sm transition-all duration-200;
+  }
+
+  .app-panel:hover {
+    @apply shadow-md border-slate-300;
+  }
+
+  .field-control {
+    @apply w-full h-11 px-3.5 py-2 text-sm font-medium text-slate-900 bg-white border border-slate-200 rounded-lg outline-none transition-all duration-150;
+  }
+
+  .field-control::placeholder {
+    @apply text-slate-400;
+  }
+
+  .field-control:hover {
+    @apply border-slate-300 bg-slate-50;
+  }
+
+  .field-control:focus {
+    @apply border-indigo-500 bg-white ring-2 ring-indigo-500/20;
+  }
+
+  .label-text {
+    @apply block text-sm font-semibold text-slate-700 mb-1.5;
+  }
+
+  .primary-button {
+    @apply inline-flex items-center justify-center gap-2 h-10 px-4 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-lg transition-all duration-150;
+  }
+
+  .primary-button:hover {
+    @apply bg-indigo-700 shadow-lg -translate-y-0.5;
+  }
+
+  .primary-button:active {
+    @apply translate-y-0;
+  }
+
+  .primary-button:disabled {
+    @apply opacity-50 cursor-not-allowed hover:translate-y-0;
+  }
+
+  .secondary-button {
+    @apply inline-flex items-center justify-center gap-2 h-10 px-4 py-2 text-sm font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg transition-all duration-150;
+  }
+
+  .secondary-button:hover {
+    @apply border-slate-300 bg-slate-50;
+  }
+
+  .page-eyebrow {
+    @apply text-xs font-bold uppercase tracking-[0.2em] text-indigo-600;
+  }
+
+  .page-title {
+    @apply mt-1.5 text-3xl font-bold tracking-tight text-slate-900;
+  }
+
+  .page-copy {
+    @apply mt-2 text-base text-slate-500;
+  }
+
+  .stat-card {
+    @apply relative bg-white rounded-xl border border-slate-200 p-5 shadow-sm transition-all duration-200;
+  }
+
+  .stat-card:hover {
+    @apply shadow-md border-indigo-200 -translate-y-0.5;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 h-10 px-3 rounded-lg text-sm font-medium text-slate-600 transition-all duration-150;
+  }
+
+  .nav-item:hover {
+    @apply bg-slate-100 text-slate-900;
+  }
+
+  .nav-item.active {
+    @apply bg-indigo-600 text-white shadow-sm;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-semibold rounded-full border;
+  }
+
+  .badge-slate {
+    @apply bg-slate-100 text-slate-700 border-slate-200;
+  }
+
+  .badge-low {
+    @apply bg-emerald-50 text-emerald-700 border-emerald-200;
+  }
+
+  .badge-medium {
+    @apply bg-amber-50 text-amber-700 border-amber-200;
+  }
+
+  .badge-high {
+    @apply bg-red-50 text-red-700 border-red-200;
+  }
+
+  .badge-todo {
+    @apply bg-slate-100 text-slate-700 border-slate-200;
+  }
+
+  .badge-progress {
+    @apply bg-blue-50 text-blue-700 border-blue-200;
+  }
+
+  .badge-completed {
+    @apply bg-emerald-50 text-emerald-700 border-emerald-200;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out forwards;
 }
