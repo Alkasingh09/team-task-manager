@@ -1,91 +1,264 @@
-# Team Task Manager
+# 🚀 Team Task Manager
 
-A full-stack MERN web application for managing team projects, task assignments, deadlines, and role-based access. The app uses a separate client/server architecture with React + Tailwind CSS on the frontend and Node.js + Express + MongoDB on the backend.
+A full-stack **MERN Task Management Web App** for managing team projects, assigning tasks, tracking deadlines, and controlling user access with role-based permissions.
 
-## Features
+🔗 **Live Demo:** https://task-manager-fe-production-2fc2.up.railway.app/  
+📂 **GitHub Repository:** https://github.com/Alkasingh09/team-task-manager.git  
 
-- JWT authentication with bcrypt password hashing
+---
+
+## 📌 Project Overview
+
+**Team Task Manager** helps teams organize projects, assign tasks, track progress, and manage deadlines from one responsive dashboard.
+
+The application has separate **frontend** and **backend** services:
+
+- Frontend: React + Vite + Tailwind CSS
+- Backend: Node.js + Express.js
+- Database: MongoDB
+- Authentication: JWT + bcryptjs
+- Deployment: Railway
+
+---
+
+## ✨ Features
+
+### 🔐 Authentication & Authorization
+- User registration and login
+- Secure password hashing using bcryptjs
+- JWT-based authentication
+- Protected routes
 - Admin and member roles
-- Protected API routes and role-based authorization
-- Project creation, editing API, deletion, and team membership
-- Task creation, assignment, status updates, priorities, due dates, and overdue tracking
-- Dashboard totals for total, completed, pending, in-progress, overdue tasks, and project-wise progress
-- Task filtering by status and priority
-- Paginated task API
-- Responsive React UI
 
-## Tech Stack
+### 👥 Role-Based Access
 
-- Frontend: React, Vite, Tailwind CSS, Axios, React Router, Lucide icons
-- Backend: Node.js, Express.js, MongoDB, Mongoose
-- Authentication: JWT and bcryptjs
-- Deployment target: Railway
+#### Admin
+- Create, edit, and delete projects
+- Add or remove project members
+- Create and assign tasks
+- Edit and delete tasks
+- Mark tasks as overdue
 
-## Folder Structure
+#### Member
+- View assigned projects
+- View assigned tasks
+- Update only the status of their own tasks
+
+### 📁 Project Management
+- Create new projects
+- Edit project details
+- Delete projects
+- Add team members to projects
+- View project-wise task progress
+
+### ✅ Task Management
+- Create and assign tasks
+- Set priority levels
+- Add due dates
+- Track task status
+- Filter tasks by status and priority
+- Paginated task listing
+- Overdue task tracking
+
+### 📊 Dashboard
+- Total tasks
+- Completed tasks
+- Pending tasks
+- In-progress tasks
+- Overdue tasks
+- Project-wise progress
+
+### 📱 Responsive UI
+- Clean and modern interface
+- Mobile-friendly design
+- Built with Tailwind CSS
+
+---
+
+## 🛠️ Tech Stack
+
+| Category | Technology |
+|---|---|
+| Frontend | React, Vite |
+| Styling | Tailwind CSS |
+| Routing | React Router |
+| API Calls | Axios |
+| Icons | Lucide React |
+| Backend | Node.js, Express.js |
+| Database | MongoDB, Mongoose |
+| Authentication | JWT, bcryptjs |
+| Deployment | Railway |
+
+---
+
+## 📂 Folder Structure
 
 ```text
-client/
-  src/
-    components/
-    context/
-    pages/
-server/
-  src/
-    config/
-    controllers/
-    middleware/
-    models/
-    routes/
+team-task-manager/
+│
+├── client/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── pages/
+│   │   └── App.jsx
+│   │
+│   ├── .env.example
+│   └── package.json
+│
+├── server/
+│   ├── src/
+│   │   ├── config/
+│   │   ├── controllers/
+│   │   ├── middleware/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   └── index.js
+│   │
+│   ├── .env.example
+│   └── package.json
+│
+└── README.md
 ```
 
-## Local Setup
+---
 
-### 1. Server
+## ⚙️ Local Setup
+
+Follow these steps to run the project locally.
+
+---
+
+## 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/Alkasingh09/team-task-manager.git
+```
+
+```bash
+cd team-task-manager
+```
+
+---
+
+## 2️⃣ Setup Backend Server
 
 ```bash
 cd server
-cp .env.example .env
+```
+
+```bash
 npm install
+```
+
+Create a `.env` file inside the `server` folder.
+
+```bash
+cp .env.example .env
+```
+
+Add the following variables:
+
+```env
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+JWT_EXPIRES_IN=7d
+CLIENT_URL=http://localhost:5173
+NODE_ENV=development
+```
+
+Start the server:
+
+```bash
 npm run dev
 ```
 
-Set `MONGO_URI`, `JWT_SECRET`, and `CLIENT_URL` in `server/.env`.
+Backend will run on:
 
-Optional demo data:
+```text
+http://localhost:5000
+```
+
+---
+
+## 3️⃣ Setup Frontend Client
+
+Open a new terminal.
+
+```bash
+cd client
+```
+
+```bash
+npm install
+```
+
+Create a `.env` file inside the `client` folder.
+
+```bash
+cp .env.example .env
+```
+
+Add the following variable:
+
+```env
+VITE_API_URL=http://localhost:5000/api
+```
+
+Start the frontend:
+
+```bash
+npm run dev
+```
+
+Frontend will run on:
+
+```text
+http://localhost:5173
+```
+
+---
+
+## 🌱 Optional Demo Data
+
+You can seed demo users and sample data.
+
+```bash
+cd server
+```
 
 ```bash
 npm run seed
 ```
 
-Demo accounts after seeding:
+Demo login accounts:
 
-- `admin@example.com` / `password123`
-- `member@example.com` / `password123`
+| Role | Email | Password |
+|---|---|---|
+| Admin | admin@example.com | password123 |
+| Member | member@example.com | password123 |
 
-### 2. Client
+---
 
-```bash
-cd client
-cp .env.example .env
-npm install
-npm run dev
+## 🔗 API Documentation
+
+Base URL:
+
+```text
+/api
 ```
 
-Set `VITE_API_URL=http://localhost:5000/api` in `client/.env`.
+---
 
-## API Documentation
-
-Base URL: `/api`
-
-### Auth
+## 🔐 Auth Routes
 
 | Method | Endpoint | Access | Description |
-| --- | --- | --- | --- |
-| POST | `/auth/register` | Public | Register a user |
-| POST | `/auth/login` | Public | Log in and receive JWT |
+|---|---|---|---|
+| POST | `/auth/register` | Public | Register a new user |
+| POST | `/auth/login` | Public | Login user and get token |
 | GET | `/auth/me` | Authenticated | Get current user |
 
-Register body:
+Example register body:
 
 ```json
 {
@@ -96,18 +269,20 @@ Register body:
 }
 ```
 
-### Projects
+---
+
+## 📁 Project Routes
 
 | Method | Endpoint | Access | Description |
-| --- | --- | --- | --- |
+|---|---|---|---|
 | GET | `/projects` | Authenticated | List visible projects |
 | POST | `/projects` | Admin | Create project |
 | GET | `/projects/:id` | Project member/admin | Get project with tasks |
 | PUT | `/projects/:id` | Admin | Update project |
-| DELETE | `/projects/:id` | Admin | Delete project and tasks |
-| GET | `/projects/users` | Admin | List users for assignment |
+| DELETE | `/projects/:id` | Admin | Delete project and related tasks |
+| GET | `/projects/users` | Admin | List users for task assignment |
 
-Project body:
+Example project body:
 
 ```json
 {
@@ -117,22 +292,24 @@ Project body:
 }
 ```
 
-### Tasks
+---
+
+## ✅ Task Routes
 
 | Method | Endpoint | Access | Description |
-| --- | --- | --- | --- |
+|---|---|---|---|
 | GET | `/tasks` | Authenticated | List tasks with filters and pagination |
 | POST | `/tasks` | Admin | Create task |
-| PUT | `/tasks/:id` | Admin or assigned member | Admin edits task; member updates own status only |
+| PUT | `/tasks/:id` | Admin or assigned member | Update task |
 | DELETE | `/tasks/:id` | Admin | Delete task |
 
-Task query filters:
+Example task query:
 
 ```text
 GET /api/tasks?status=To%20Do&priority=High&page=1&limit=20
 ```
 
-Task body:
+Example task body:
 
 ```json
 {
@@ -146,46 +323,86 @@ Task body:
 }
 ```
 
-### Dashboard
+---
+
+## 📊 Dashboard Route
 
 | Method | Endpoint | Access | Description |
-| --- | --- | --- | --- |
+|---|---|---|---|
 | GET | `/dashboard` | Authenticated | Get task totals and project progress |
 
-## Role Rules
+---
 
-- Admins can create, edit, and delete projects.
-- Admins can add/remove project members through the project update API.
-- Admins can create, assign, edit, delete, and mark tasks overdue.
-- Members can view assigned projects and tasks.
-- Members can update only the `status` of tasks assigned to them.
+## 🚀 Deployment
 
-## Railway Deployment
+The project is deployed on **Railway**.
 
-Deploy the server and client as separate Railway services.
+### Live Frontend
 
-### Server service
+```text
+https://task-manager-fe-production-2fc2.up.railway.app/
+```
 
-- Root directory: `server`
-- Build command: `npm install`
-- Start command: `npm start`
-- Variables:
-  - `MONGO_URI`
-  - `JWT_SECRET`
-  - `JWT_EXPIRES_IN`
-  - `CLIENT_URL`
-  - `NODE_ENV=production`
+---
 
-### Client service
+## Railway Backend Service
 
-- Root directory: `client`
-- Build command: `npm install && npm run build`
-- Start command: `npm run preview -- --port $PORT`
-- Variables:
-  - `VITE_API_URL=https://your-server-url.railway.app/api`
+Backend service settings:
 
-## Submission
+| Setting | Value |
+|---|---|
+| Root Directory | `server` |
+| Build Command | `npm install` |
+| Start Command | `npm start` |
 
-- Live URL: add after Railway deployment
-- GitHub Repository URL: add after pushing to GitHub
-- Deployment link: add after Railway deployment
+Backend environment variables:
+
+```env
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+JWT_EXPIRES_IN=7d
+CLIENT_URL=https://task-manager-fe-production-2fc2.up.railway.app
+NODE_ENV=production
+```
+
+---
+
+## Railway Frontend Service
+
+Frontend service settings:
+
+| Setting | Value |
+|---|---|
+| Root Directory | `client` |
+| Build Command | `npm install && npm run build` |
+| Start Command | `npm run preview -- --port $PORT` |
+
+Frontend environment variable:
+
+```env
+VITE_API_URL=https://your-server-url.railway.app/api
+```
+
+---
+
+## 👩‍💻 Author
+
+**Alka Singh**
+
+GitHub: https://github.com/Alkasingh09
+
+---
+
+## 📌 Submission Links
+
+| Type | Link |
+|---|---|
+| Live Project | https://task-manager-fe-production-2fc2.up.railway.app/ |
+| GitHub Repository | https://github.com/Alkasingh09/team-task-manager.git |
+| Deployment Platform | Railway |
+
+---
+
+## ⭐ Final Note
+
+This project demonstrates a complete MERN stack workflow with authentication, protected APIs, role-based access, project management, task management, dashboard analytics, and cloud deployment.
